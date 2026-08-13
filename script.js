@@ -9,9 +9,9 @@
   var helpScreen = document.getElementById("help-screen");
   var helpContactTile = document.getElementById("help-contact-tile");
   var helpBack = document.getElementById("help-back");
-  var infonrufBtn = document.getElementById("infonruf-btn");
-  var infonrufLabel = document.getElementById("infonruf-label");
-  var defaultLabelText = infonrufLabel.textContent;
+  var inforufBtn = document.getElementById("inforuf-btn");
+  var inforufLabel = document.getElementById("inforuf-label");
+  var defaultLabelText = inforufLabel.textContent;
 
   var widget = null;
   var callState = "idle"; // idle | connecting | active
@@ -33,10 +33,10 @@
 
   function setState(state, labelText) {
     callState = state;
-    infonrufBtn.classList.remove("help-option--calling", "help-option--active");
-    if (state === "connecting") infonrufBtn.classList.add("help-option--calling");
-    if (state === "active") infonrufBtn.classList.add("help-option--active");
-    infonrufLabel.textContent = labelText || defaultLabelText;
+    inforufBtn.classList.remove("help-option--calling", "help-option--active");
+    if (state === "connecting") inforufBtn.classList.add("help-option--calling");
+    if (state === "active") inforufBtn.classList.add("help-option--active");
+    inforufLabel.textContent = labelText || defaultLabelText;
   }
 
   function initWidget() {
@@ -50,7 +50,7 @@
       .initWebRTCWidget(ENDPOINT_URL, {
         ui: {
           labels: {
-            callButton: "Infonruf",
+            callButton: "Inforuf",
             endButton: "Anruf beenden",
             listenLabel: "IDA hört zu ...",
           },
@@ -90,7 +90,7 @@
   }
 
   // The widget renders its own call/end-call buttons; we forward clicks
-  // from our "Infonruf" button to those real buttons so Cognigy handles
+  // from our "Inforuf" button to those real buttons so Cognigy handles
   // mic permission and SIP session setup while our own button keeps its
   // dashboard look.
   function findWidgetButton(selector) {
@@ -123,7 +123,7 @@
     resetToIdle();
   }
 
-  infonrufBtn.addEventListener("click", function () {
+  inforufBtn.addEventListener("click", function () {
     if (callState === "idle") {
       startCall();
     } else if (callState === "active") {

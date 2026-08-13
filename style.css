@@ -309,7 +309,7 @@ body {
   50% { box-shadow: 0 0 0 3px var(--accent), 0 0 34px rgba(232, 67, 44, 0.9); }
 }
 
-/* Help & Kontakt sub-screen (Infonruf / Pannenruf / Notruf) */
+/* Help & Kontakt sub-screen (Notruf / Pannenruf / Inforuf) */
 
 .help-screen[hidden] {
   display: none;
@@ -322,7 +322,9 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(160deg, #1d63b0 0%, #164d8c 60%, #103a6b 100%);
+  background:
+    radial-gradient(120% 90% at 15% 0%, rgba(255, 255, 255, 0.06), transparent 55%),
+    linear-gradient(160deg, var(--bg-top) 0%, #142a40 32%, var(--bg-bottom) 75%);
 }
 
 .help-back {
@@ -363,66 +365,70 @@ body {
 
 .help-options {
   display: flex;
-  gap: 36px;
+  gap: 64px;
 }
 
 .help-option {
   appearance: none;
   border: none;
-  width: 168px;
-  height: 168px;
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.14);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
-  color: #fff;
+  background: none;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 16px;
+  gap: 14px;
   cursor: pointer;
+  color: var(--label-color);
   font-family: inherit;
-  transition: background 0.15s ease, transform 0.15s ease;
-}
-
-.help-option:hover {
-  background: rgba(255, 255, 255, 0.22);
-}
-
-.help-option:active {
-  transform: scale(0.97);
 }
 
 .help-option-icon {
-  width: 46px;
-  height: 46px;
+  width: 132px;
+  height: 132px;
+  border-radius: 26px;
+  background: var(--tile-bg);
+  color: var(--tile-icon);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  transition: background 0.15s ease, transform 0.15s ease;
 }
 
 .help-option-icon svg {
-  width: 100%;
-  height: 100%;
+  width: 44%;
+  height: 44%;
+}
+
+.help-option:hover .help-option-icon {
+  background: var(--tile-bg-hover);
+}
+
+.help-option:active .help-option-icon {
+  transform: scale(0.96);
 }
 
 .help-option-label {
   font-size: 15px;
   font-weight: 600;
+  color: #fff;
 }
 
-.help-option--emergency {
+.help-option--emergency .help-option-icon {
   background: rgba(232, 67, 44, 0.22);
   box-shadow: inset 0 0 0 1px rgba(232, 67, 44, 0.5);
 }
 
-.help-option--emergency:hover {
+.help-option--emergency:hover .help-option-icon {
   background: rgba(232, 67, 44, 0.32);
 }
 
-.help-option--calling {
+.help-option--calling .help-option-icon {
   animation: pulse-connecting 1.1s ease-in-out infinite;
 }
 
-.help-option--active {
-  background: rgba(232, 67, 44, 0.3);
+.help-option--active .help-option-icon {
+  background: rgba(232, 67, 44, 0.28);
   animation: pulse-active 1.6s ease-in-out infinite;
 }
 
