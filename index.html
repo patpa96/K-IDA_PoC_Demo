@@ -7,7 +7,21 @@
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<div class="dashboard">
+
+<div class="auth-gate" id="auth-gate">
+  <form class="auth-card" id="auth-form" autocomplete="off">
+    <span class="auth-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="10.5" width="14" height="9.5" rx="2.2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5" stroke-linecap="round"/><circle cx="12" cy="15" r="1.4" fill="currentColor" stroke="none"/></svg>
+    </span>
+    <h1>Zugriff geschützt</h1>
+    <p>Bitte Zugangscode eingeben, um fortzufahren.</p>
+    <input type="password" id="auth-token-input" placeholder="Zugangscode" autofocus />
+    <button type="submit">Entsperren</button>
+    <p class="auth-error" id="auth-error" hidden>Falscher Zugangscode.</p>
+  </form>
+</div>
+
+<div class="dashboard" id="dashboard" hidden>
 
   <header class="topbar">
     <div class="topbar-group">
@@ -169,6 +183,7 @@
 
 </div>
 
+<script src="auth.js"></script>
 <script src="https://github.com/Cognigy/click-to-call-widget/releases/latest/download/webRTCWidget.js"></script>
 <script src="script.js"></script>
 </body>

@@ -13,6 +13,33 @@ Widget).
 - `script.js` – Bindet das Cognigy WebRTC Click-to-Call Widget ein und
   verknüpft den Klick auf die Kachel mit dem Start-/Endanruf-Button des
   Widgets
+- `auth.js` – Einfache clientseitige Zugangscode-Hürde (siehe unten)
+
+## Zugangsschutz
+
+Die Seite verlangt vor der Anzeige einen Zugangscode (Bildschirm "Zugriff
+geschützt"). **Wichtig:** GitHub Pages liefert nur statische Dateien ohne
+Server-Backend aus. Dieser Schutz ist daher eine reine Client-seitige Hürde
+gegen zufälliges/versehentliches Öffnen der Seite – der Seitenquelltext
+(`auth.js`) ist für jeden einsehbar, wodurch sich der Check technisch
+umgehen lässt. Für einen echten Zugriffsschutz wird ein vorgeschalteter
+Auth-Layer benötigt (z. B. Cloudflare Access) oder ein Hosting mit
+serverseitiger Logik.
+
+Der aktuell hinterlegte Zugangscode: `u76ZT073n08NUeFh3FzH`
+
+Zwei Wege, ihn zu verwenden:
+
+1. Direkt auf der Seite im Feld "Zugangscode" eingeben
+2. Per Link mit Query-Parameter teilen, z. B.
+   `https://k-ida.poc.demo.de/?token=u76ZT073n08NUeFh3FzH` – entsperrt
+   automatisch und entfernt den Token danach aus der URL
+
+Nach erfolgreicher Eingabe bleibt die Seite für die Dauer der Browser-Session
+(`sessionStorage`) entsperrt. Um den Code zu ändern: neuen Code wählen, den
+SHA-256-Hash bilden (z. B. `python3 -c "import hashlib;
+print(hashlib.sha256(b'NEUER_CODE').hexdigest())"`) und `TOKEN_HASH` in
+`auth.js` ersetzen.
 
 ## Cognigy-Anbindung
 
