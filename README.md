@@ -54,6 +54,20 @@ Alternativ kann sie auf jedem beliebigen statischen Webhost (Netlify,
 Vercel, eigener Webserver, S3 etc.) deployt werden – es müssen lediglich
 `index.html`, `style.css` und `script.js` zusammen bereitgestellt werden.
 
+### Eigene Domain (k-ida.poc.demo.de)
+
+Die Datei `CNAME` im Repo-Root ist bereits auf `k-ida.poc.demo.de` gesetzt.
+Damit die Domain funktioniert, zusätzlich nötig:
+
+1. Beim DNS-Provider der Domain einen **CNAME-Eintrag** anlegen:
+   `k-ida.poc.demo.de` → `patpa96.github.io`
+2. In den Repository-Einstellungen unter *Pages* die Custom Domain
+   `k-ida.poc.demo.de` eintragen (übernimmt GitHub i. d. R. automatisch aus
+   der `CNAME`-Datei) und auf DNS-Check warten
+3. "Enforce HTTPS" aktivieren, sobald das Zertifikat ausgestellt wurde
+
+Die Seite ist danach unter **https://k-ida.poc.demo.de** erreichbar.
+
 ## Lokal testen
 
 ```bash
