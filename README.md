@@ -32,8 +32,8 @@ Zwei Wege, ihn zu verwenden:
 
 1. Direkt auf der Seite im Feld "Zugangscode" eingeben
 2. Per Link mit Query-Parameter teilen, z. B.
-   `https://k-ida.poc.demo.de/?token=u76ZT073n08NUeFh3FzH` – entsperrt
-   automatisch und entfernt den Token danach aus der URL
+   `https://patpa96.github.io/LandingPage_Test/?token=u76ZT073n08NUeFh3FzH` –
+   entsperrt automatisch und entfernt den Token danach aus der URL
 
 Nach erfolgreicher Eingabe bleibt die Seite für die Dauer der Browser-Session
 (`sessionStorage`) entsperrt. Um den Code zu ändern: neuen Code wählen, den
@@ -81,19 +81,9 @@ Alternativ kann sie auf jedem beliebigen statischen Webhost (Netlify,
 Vercel, eigener Webserver, S3 etc.) deployt werden – es müssen lediglich
 `index.html`, `style.css` und `script.js` zusammen bereitgestellt werden.
 
-### Eigene Domain (k-ida.poc.demo.de)
-
-Die Datei `CNAME` im Repo-Root ist bereits auf `k-ida.poc.demo.de` gesetzt.
-Damit die Domain funktioniert, zusätzlich nötig:
-
-1. Beim DNS-Provider der Domain einen **CNAME-Eintrag** anlegen:
-   `k-ida.poc.demo.de` → `patpa96.github.io`
-2. In den Repository-Einstellungen unter *Pages* die Custom Domain
-   `k-ida.poc.demo.de` eintragen (übernimmt GitHub i. d. R. automatisch aus
-   der `CNAME`-Datei) und auf DNS-Check warten
-3. "Enforce HTTPS" aktivieren, sobald das Zertifikat ausgestellt wurde
-
-Die Seite ist danach unter **https://k-ida.poc.demo.de** erreichbar.
+Die Seite ist danach unter **https://patpa96.github.io/LandingPage_Test/**
+erreichbar. Eine eigene Domain ist optional; ohne eigenen Domain-Provider
+einfach die Standard-GitHub-Pages-URL verwenden.
 
 ## Lokal testen
 
