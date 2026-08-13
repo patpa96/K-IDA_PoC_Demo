@@ -1,4 +1,4 @@
-# LandingPage_Test
+# K-IDA_PoC_Demo
 
 Landing Page im Look eines Fahrzeug-Infotainment-Homescreens. Die Kachel
 **"Hilfe & Kontakt"** startet per Klick einen Voice-Call mit dem Cognigy
@@ -32,7 +32,7 @@ Zwei Wege, ihn zu verwenden:
 
 1. Direkt auf der Seite im Feld "Zugangscode" eingeben
 2. Per Link mit Query-Parameter teilen, z. B.
-   `https://patpa96.github.io/LandingPage_Test/?token=u76ZT073n08NUeFh3FzH` –
+   `https://patpa96.github.io/K-IDA_PoC_Demo/?token=u76ZT073n08NUeFh3FzH` –
    entsperrt automatisch und entfernt den Token danach aus der URL
 
 Nach erfolgreicher Eingabe bleibt die Seite für die Dauer der Browser-Session
@@ -81,7 +81,7 @@ Alternativ kann sie auf jedem beliebigen statischen Webhost (Netlify,
 Vercel, eigener Webserver, S3 etc.) deployt werden – es müssen lediglich
 `index.html`, `style.css` und `script.js` zusammen bereitgestellt werden.
 
-Die Seite ist danach unter **https://patpa96.github.io/LandingPage_Test/**
+Die Seite ist danach unter **https://patpa96.github.io/K-IDA_PoC_Demo/**
 erreichbar. Eine eigene Domain ist optional; ohne eigenen Domain-Provider
 einfach die Standard-GitHub-Pages-URL verwenden.
 
