@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hilfe &amp; Kontakt – VoiceBot</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="dashboard">
+
+  <header class="topbar">
+    <div class="topbar-group">
+      <span class="topbar-icon" title="Apps">
+        <svg viewBox="0 0 24 24"><g fill="currentColor"><circle cx="5" cy="5" r="1.6"/><circle cx="12" cy="5" r="1.6"/><circle cx="19" cy="5" r="1.6"/><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/><circle cx="5" cy="19" r="1.6"/><circle cx="12" cy="19" r="1.6"/><circle cx="19" cy="19" r="1.6"/></g></svg>
+      </span>
+      <span class="topbar-icon" title="Fahrzeug">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 16v-3.2L6 8.5c.4-.9 1.3-1.5 2.3-1.5h7.4c1 0 1.9.6 2.3 1.5L20 12.8V16" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 16h16v2a1 1 0 0 1-1 1h-1.5a1 1 0 0 1-1-1v-.5h-9V18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2Z"/><circle cx="7.5" cy="16" r="1.2"/><circle cx="16.5" cy="16" r="1.2"/></svg>
+      </span>
+      <span class="topbar-icon" title="Navigation">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3 5 20l7-4 7 4-7-17Z" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="topbar-icon" title="Einstellungen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 2.5v2.2M12 19.3v2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6" stroke-linecap="round"/></svg>
+      </span>
+      <span class="topbar-icon" title="Hinzufügen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+      </span>
+    </div>
+    <div class="topbar-group">
+      <span class="topbar-icon" title="Profil">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8.2" r="3.4"/><path d="M4.8 20c1.2-3.4 4-5.3 7.2-5.3s6 1.9 7.2 5.3" stroke-linecap="round"/></svg>
+      </span>
+      <span class="topbar-icon" title="Signal">
+        <svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="14" width="3" height="6" rx="0.6"/><rect x="8.5" y="10.5" width="3" height="9.5" rx="0.6"/><rect x="14" y="7" width="3" height="13" rx="0.6"/><rect x="19.5" y="3.5" width="3" height="16.5" rx="0.6" opacity="0.35"/></svg>
+      </span>
+      <span class="topbar-icon" title="Netzwerk">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.3 3.6 5.3 3.6 8.5s-1.2 6.2-3.6 8.5c-2.4-2.3-3.6-5.3-3.6-8.5S9.6 5.8 12 3.5Z"/></svg>
+      </span>
+      <span class="topbar-clock" id="clock">00:08</span>
+    </div>
+  </header>
+
+  <main class="tiles-grid">
+
+    <button type="button" class="tile tile--highlight" id="help-contact-tile" title="Hilfe & Kontakt">
+      <span class="tile-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 13v-1a8 8 0 0 1 16 0v1" stroke-linecap="round"/><rect x="2.7" y="12" width="4" height="6" rx="1.6"/><rect x="17.3" y="12" width="4" height="6" rx="1.6"/><path d="M19 18v1.2a2.8 2.8 0 0 1-2.8 2.8H13.6" stroke-linecap="round"/><circle cx="12" cy="21" r="1.3"/></svg>
+      </span>
+      <span class="tile-label" id="help-contact-label">Hilfe &amp; Kontakt</span>
+    </button>
+
+    <button type="button" class="tile" title="Connect Key">
+      <span class="tile-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="7" y="3" width="10" height="17" rx="2.4"/><circle cx="12" cy="8.4" r="1.5" fill="currentColor" stroke="none"/><path d="M12 12.5v4" stroke-linecap="round"/></svg>
+      </span>
+      <span class="tile-label">*Connect Key</span>
+    </button>
+
+    <button type="button" class="tile" title="Einstellungen">
+      <span class="tile-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3.1"/><path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7" stroke-linecap="round"/></svg>
+      </span>
+      <span class="tile-label">Einstellungen</span>
+    </button>
+
+    <button type="button" class="tile tile--dark" title="Rechtliches">
+      <span class="tile-icon tile-icon--symbol">&sect;</span>
+      <span class="tile-label">Rechtliches</span>
+    </button>
+
+    <button type="button" class="tile" title="Climate Preconditioning">
+      <span class="tile-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M4.5 6.5l15 11M19.5 6.5l-15 11" stroke-linecap="round"/><path d="M12 2 9.8 4.4M12 2l2.2 2.4M12 22l-2.2-2.4M12 22l2.2-2.4" stroke-linecap="round"/></svg>
+        <span class="tile-badge">24</span>
+      </span>
+      <span class="tile-label">*CLimate Preco...</span>
+    </button>
+
+    <button type="button" class="tile" title="Car Control Center">
+      <span class="tile-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2"/><path d="M12 4v3.2M6.3 15l2.8-1.6M17.7 15l-2.8-1.6" stroke-linecap="round"/></svg>
+        <span class="tile-badge">24</span>
+      </span>
+      <span class="tile-label">*Car Control Ce...</span>
+    </button>
+
+    <button type="button" class="tile" title="Climate Front">
+      <span class="tile-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3.3"/><path d="M12 2.5v3.5M12 18v3.5M4.6 5.4l2.6 2.4M16.8 16.2l2.6 2.4M2.5 12H6M18 12h3.5M4.6 18.6l2.6-2.4M16.8 7.8l2.6-2.4" stroke-linecap="round"/></svg>
+        <span class="tile-badge">24</span>
+      </span>
+      <span class="tile-label">*Climate Front</span>
+    </button>
+
+    <button type="button" class="tile" title="InteriorLight">
+      <span class="tile-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.2"/><circle cx="12" cy="12" r="8"/><path d="M12 4v1.4M12 18.6V20M4 12h1.4M18.6 12H20" stroke-linecap="round"/></svg>
+        <span class="tile-badge">24</span>
+      </span>
+      <span class="tile-label">*InteriorLight</span>
+    </button>
+
+    <button type="button" class="tile" title="Parking Coordinator">
+      <span class="tile-icon tile-icon--symbol">P<span class="tile-badge">24</span></span>
+      <span class="tile-label">*Parking Coord...</span>
+    </button>
+
+    <button type="button" class="tile" title="Seat">
+      <span class="tile-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 4h4a1.6 1.6 0 0 1 1.6 1.6V13H8z"/><path d="M8 13H6.2A2.2 2.2 0 0 0 4 15.2V19h11.2c1.5 0 2.8-1 3.2-2.5l.9-3.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="tile-badge">24</span>
+      </span>
+      <span class="tile-label">*Seat</span>
+    </button>
+
+    <button type="button" class="tile" title="Trip Computer">
+      <span class="tile-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 19V11M10.3 19V7M15.6 19v-6M20.9 19V4" stroke-linecap="round"/></svg>
+        <span class="tile-badge">24</span>
+      </span>
+      <span class="tile-label">*Trip Computer</span>
+    </button>
+
+    <button type="button" class="tile" title="iPod App bluetooth">
+      <span class="tile-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 6.5 16 12l-8 5.5v-14L16 8l-8 5.5" stroke-linejoin="round" stroke-linecap="round"/></svg>
+        <span class="tile-badge">24</span>
+      </span>
+      <span class="tile-label">*iPod App blue...</span>
+    </button>
+
+  </main>
+
+  <footer class="bottombar">
+    <span class="bottombar-label">CLIMA</span>
+    <span class="bottombar-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4v16M18 4v16" stroke-linecap="round"/><circle cx="6" cy="9" r="1.4" fill="#4fa6e0" stroke="none"/><circle cx="18" cy="9" r="1.4" fill="#e8432c" stroke="none"/></svg>
+    </span>
+    <span class="bottombar-home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 11.5 12 5l8 6.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10.5V19h12v-8.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </span>
+    <span class="bottombar-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4v16M18 4v16" stroke-linecap="round"/><circle cx="6" cy="9" r="1.4" fill="#4fa6e0" stroke="none"/><circle cx="18" cy="9" r="1.4" fill="#e8432c" stroke="none"/></svg>
+    </span>
+  </footer>
+
+</div>
+
+<script src="https://github.com/Cognigy/click-to-call-widget/releases/latest/download/webRTCWidget.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
