@@ -194,6 +194,10 @@ body {
 
 /* Tile grid */
 
+.tiles-grid[hidden] {
+  display: none;
+}
+
 .tiles-grid {
   flex: 1 1 auto;
   display: grid;
@@ -303,6 +307,123 @@ body {
 @keyframes pulse-active {
   0%, 100% { box-shadow: 0 0 0 3px var(--accent), 0 0 20px rgba(232, 67, 44, 0.55); }
   50% { box-shadow: 0 0 0 3px var(--accent), 0 0 34px rgba(232, 67, 44, 0.9); }
+}
+
+/* Help & Kontakt sub-screen (Infonruf / Pannenruf / Notruf) */
+
+.help-screen[hidden] {
+  display: none;
+}
+
+.help-screen {
+  flex: 1 1 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, #1d63b0 0%, #164d8c 60%, #103a6b 100%);
+}
+
+.help-back {
+  position: absolute;
+  top: 28px;
+  left: 32px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.help-back svg {
+  width: 20px;
+  height: 20px;
+}
+
+.help-back:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.help-title {
+  position: absolute;
+  top: 34px;
+  left: 84px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.3px;
+}
+
+.help-options {
+  display: flex;
+  gap: 36px;
+}
+
+.help-option {
+  appearance: none;
+  border: none;
+  width: 168px;
+  height: 168px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.help-option:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.help-option:active {
+  transform: scale(0.97);
+}
+
+.help-option-icon {
+  width: 46px;
+  height: 46px;
+}
+
+.help-option-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.help-option-label {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.help-option--emergency {
+  background: rgba(232, 67, 44, 0.22);
+  box-shadow: inset 0 0 0 1px rgba(232, 67, 44, 0.5);
+}
+
+.help-option--emergency:hover {
+  background: rgba(232, 67, 44, 0.32);
+}
+
+.help-option--calling {
+  animation: pulse-connecting 1.1s ease-in-out infinite;
+}
+
+.help-option--active {
+  background: rgba(232, 67, 44, 0.3);
+  animation: pulse-active 1.6s ease-in-out infinite;
 }
 
 /* Bottom bar */

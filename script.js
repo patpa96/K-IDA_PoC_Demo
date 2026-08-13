@@ -5,21 +5,38 @@
   var ENDPOINT_URL =
     "https://endpoint-trial.cognigy.ai/f4621d3ec12b0c29e593f15193344531067f38d326a64e78fc5430e41dfca292/voiceGateway";
 
-  var tile = document.getElementById("help-contact-tile");
-  var label = document.getElementById("help-contact-label");
-  var defaultLabelText = label.textContent;
+  var tilesGrid = document.getElementById("tiles-grid");
+  var helpScreen = document.getElementById("help-screen");
+  var helpContactTile = document.getElementById("help-contact-tile");
+  var helpBack = document.getElementById("help-back");
+  var infonrufBtn = document.getElementById("infonruf-btn");
+  var infonrufLabel = document.getElementById("infonruf-label");
+  var defaultLabelText = infonrufLabel.textContent;
 
   var widget = null;
   var callState = "idle"; // idle | connecting | active
   var findButtonAttempts = 0;
   var MAX_FIND_ATTEMPTS = 20;
 
+  function showHelpScreen() {
+    tilesGrid.hidden = true;
+    helpScreen.hidden = false;
+  }
+
+  function showTilesGrid() {
+    helpScreen.hidden = true;
+    tilesGrid.hidden = false;
+  }
+
+  helpContactTile.addEventListener("click", showHelpScreen);
+  helpBack.addEventListener("click", showTilesGrid);
+
   function setState(state, labelText) {
     callState = state;
-    tile.classList.remove("is-connecting", "is-active");
-    if (state === "connecting") tile.classList.add("is-connecting");
-    if (state === "active") tile.classList.add("is-active");
-    label.textContent = labelText || defaultLabelText;
+    infonrufBtn.classList.remove("help-option--calling", "help-option--active");
+    if (state === "connecting") infonrufBtn.classList.add("help-option--calling");
+    if (state === "active") infonrufBtn.classList.add("help-option--active");
+    infonrufLabel.textContent = labelText || defaultLabelText;
   }
 
   function initWidget() {
@@ -33,7 +50,7 @@
       .initWebRTCWidget(ENDPOINT_URL, {
         ui: {
           labels: {
-            callButton: "Hilfe & Kontakt",
+            callButton: "Infonruf",
             endButton: "Anruf beenden",
             listenLabel: "IDA hört zu ...",
           },
@@ -73,8 +90,9 @@
   }
 
   // The widget renders its own call/end-call buttons; we forward clicks
-  // from our tile to those real buttons so Cognigy handles mic permission
-  // and SIP session setup while our dashboard tile keeps its own look.
+  // from our "Infonruf" button to those real buttons so Cognigy handles
+  // mic permission and SIP session setup while our own button keeps its
+  // dashboard look.
   function findWidgetButton(selector) {
     return document.querySelector(selector);
   }
@@ -105,7 +123,7 @@
     resetToIdle();
   }
 
-  tile.addEventListener("click", function () {
+  infonrufBtn.addEventListener("click", function () {
     if (callState === "idle") {
       startCall();
     } else if (callState === "active") {
