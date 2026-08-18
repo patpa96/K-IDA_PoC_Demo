@@ -47,8 +47,13 @@ In `script.js` ist der VoiceGateway-Endpoint der Cognigy-Umgebung
 `trial.cognigy.ai` (Flow "Ida - AI Agent") hinterlegt:
 
 ```js
-var ENDPOINT_URL = "https://endpoint-trial.cognigy.ai/<token>/voiceGateway";
+var ENDPOINT_URL = "https://endpoint-trial.cognigy.ai/<token>";
 ```
+
+(Kein `/voiceGateway`-Suffix am Ende der URL – die Widget-Bibliothek löst
+den WebSocket-Pfad intern selbst auf. Von Miriam per
+`https://static-trial.cognigy.ai/webrtc/?token=<token>` als funktionierend
+bestätigt.)
 
 Das Widget-Skript wird über den offiziellen Cognigy-Release-Link eingebunden:
 
@@ -58,9 +63,9 @@ Das Widget-Skript wird über den offiziellen Cognigy-Release-Link eingebunden:
 
 Beim Laden der Seite wird `window.initWebRTCWidget(ENDPOINT_URL, options)`
 aufgerufen. Das Widget rendert dabei seine eigenen (unsichtbar geschalteten)
-Steuerelemente in den DOM; unsere "Hilfe & Kontakt"-Kachel leitet Klicks an
-die echten Call-/End-Call-Buttons des Widgets weiter, damit Cognigy die
-Mikrofonfreigabe und SIP-Session steuert, während unser eigenes
+Steuerelemente in den DOM; der "Inforuf"-Button im Hilfe & Kontakt-Untermenü
+leitet Klicks an die echten Call-/End-Call-Buttons des Widgets weiter, damit
+Cognigy die Mikrofonfreigabe und SIP-Session steuert, während unser eigenes
 Kachel-Design sichtbar bleibt.
 
 Soll ein anderer Endpoint verwendet werden, einfach `ENDPOINT_URL` in

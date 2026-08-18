@@ -1,9 +1,12 @@
 (function () {
   "use strict";
 
-  // Cognigy VoiceGateway WebRTC endpoint ("Ida - AI Agent" flow).
+  // Cognigy VoiceGateway WebRTC endpoint ("Ida - AI Agent" flow), confirmed
+  // working by Miriam via https://static-trial.cognigy.ai/webrtc/ (no
+  // trailing "/voiceGateway" segment on this URL - the widget resolves the
+  // WebSocket path internally).
   var ENDPOINT_URL =
-    "https://endpoint-trial.cognigy.ai/f4621d3ec12b0c29e593f15193344531067f38d326a64e78fc5430e41dfca292/voiceGateway";
+    "https://endpoint-trial.cognigy.ai/f4621d3ec12b0c29e593f15193344531067f38d326a64e78fc5430e41dfca292";
 
   var tilesGrid = document.getElementById("tiles-grid");
   var helpScreen = document.getElementById("help-screen");
