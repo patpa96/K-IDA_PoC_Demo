@@ -217,6 +217,13 @@
 
 <script src="auth.js"></script>
 <script src="https://github.com/Cognigy/click-to-call-widget/releases/latest/download/webRTCWidget.js"></script>
+<script>
+addEventListener("load", (event) => {
+  if (window.initWebRTCWidget) {
+    window.initWebRTCWidget("https://endpoint-trial.cognigy.ai/f4621d3ec12b0c29e593f15193344531067f38d326a64e78fc5430e41dfca292")
+  }
+});
+</script>
 <script src="script.js"></script>
 </body>
 </html>

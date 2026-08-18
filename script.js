@@ -1,12 +1,9 @@
 (function () {
   "use strict";
 
-  // Cognigy VoiceGateway WebRTC endpoint ("Ida - AI Agent" flow), confirmed
-  // working by Miriam via https://static-trial.cognigy.ai/webrtc/ (no
-  // trailing "/voiceGateway" segment on this URL - the widget resolves the
-  // WebSocket path internally).
-  var ENDPOINT_URL =
-    "https://endpoint-trial.cognigy.ai/f4621d3ec12b0c29e593f15193344531067f38d326a64e78fc5430e41dfca292";
+  // Cognigy WebRTC widget init call itself lives inline in index.html,
+  // matching Miriam's confirmed-working snippet verbatim (single argument,
+  // no options object) - this file only wires our own UI to it.
 
   var tilesGrid = document.getElementById("tiles-grid");
   var helpScreen = document.getElementById("help-screen");
@@ -16,7 +13,6 @@
   var inforufLabel = document.getElementById("inforuf-label");
   var defaultLabelText = inforufLabel.textContent;
 
-  var widget = null;
   var callState = "idle"; // idle | connecting | active
   var findButtonAttempts = 0;
   var MAX_FIND_ATTEMPTS = 20;
@@ -42,64 +38,14 @@
     inforufLabel.textContent = labelText || defaultLabelText;
   }
 
-  function initWidget() {
-    if (typeof window.initWebRTCWidget !== "function") {
-      // Widget script not loaded yet or failed to load; retry shortly.
-      setTimeout(initWidget, 300);
-      return;
-    }
-
-    window
-      .initWebRTCWidget(ENDPOINT_URL, {
-        ui: {
-          labels: {
-            callButton: "Inforuf",
-            endButton: "Anruf beenden",
-            listenLabel: "IDA hört zu ...",
-          },
-        },
-      })
-      .then(function (createdWidget) {
-        widget = createdWidget;
-        bindWidgetEvents(widget);
-      })
-      .catch(function (err) {
-        console.error("Cognigy WebRTC Widget konnte nicht initialisiert werden:", err);
-        setState("idle", "Nicht erreichbar");
-      });
-  }
-
-  function bindWidgetEvents(widget) {
-    if (!widget || typeof widget.on !== "function") return;
-
-    widget.on("newRTCSession", function (session) {
-      setState("active", "Auflegen");
-
-      session.on("answered", function () {
-        setState("active", "Verbunden – Auflegen");
-      });
-      session.on("failed", resetToIdle);
-      session.on("ended", resetToIdle);
-      session.on("terminated", resetToIdle);
-    });
-
-    widget.on("registrationFailed", function () {
-      setState("idle", "Nicht erreichbar");
-    });
-  }
-
-  function resetToIdle() {
-    setState("idle");
+  function findWidgetButton(selector) {
+    return document.querySelector(selector);
   }
 
   // The widget renders its own call/end-call buttons; we forward clicks
   // from our "Inforuf" button to those real buttons so Cognigy handles
   // mic permission and SIP session setup while our own button keeps its
   // dashboard look.
-  function findWidgetButton(selector) {
-    return document.querySelector(selector);
-  }
-
   function startCall() {
     var callButton = findWidgetButton(".webrtc_widget_call_button");
     if (callButton) {
@@ -123,7 +69,7 @@
     if (endButton) {
       endButton.click();
     }
-    resetToIdle();
+    setState("idle");
   }
 
   inforufBtn.addEventListener("click", function () {
@@ -133,6 +79,20 @@
       endCall();
     }
   });
+
+  // We don't have a reference to the widget instance (its init call lives
+  // in its own inline <script> in index.html), so an active call is
+  // detected by watching for the widget's own end-call button appearing/
+  // disappearing in the DOM instead of listening to widget.on(...) events.
+  var callObserver = new MutationObserver(function () {
+    var endButtonPresent = !!findWidgetButton(".webrtc_widget_end_call_button");
+    if (endButtonPresent && callState !== "active") {
+      setState("active", "Auflegen");
+    } else if (!endButtonPresent && callState === "active") {
+      setState("idle");
+    }
+  });
+  callObserver.observe(document.body, { childList: true, subtree: true });
 
   function updateClock() {
     var clockEl = document.getElementById("clock");
@@ -145,6 +105,4 @@
 
   updateClock();
   setInterval(updateClock, 15000);
-
-  window.addEventListener("load", initWidget);
 })();

@@ -43,33 +43,38 @@ print(hashlib.sha256(b'NEUER_CODE').hexdigest())"`) und `TOKEN_HASH` in
 
 ## Cognigy-Anbindung
 
-In `script.js` ist der VoiceGateway-Endpoint der Cognigy-Umgebung
-`trial.cognigy.ai` (Flow "Ida - AI Agent") hinterlegt:
-
-```js
-var ENDPOINT_URL = "https://endpoint-trial.cognigy.ai/<token>";
-```
-
-(Kein `/voiceGateway`-Suffix am Ende der URL – die Widget-Bibliothek löst
-den WebSocket-Pfad intern selbst auf. Von Miriam per
-`https://static-trial.cognigy.ai/webrtc/?token=<token>` als funktionierend
-bestätigt.)
-
-Das Widget-Skript wird über den offiziellen Cognigy-Release-Link eingebunden:
+Das Widget-Skript und der Init-Aufruf stehen direkt inline in `index.html`,
+1:1 identisch zu dem von Miriam bestätigten Snippet (VoiceGateway-Endpoint
+der Cognigy-Umgebung `trial.cognigy.ai`, Flow "Ida - AI Agent"):
 
 ```html
 <script src="https://github.com/Cognigy/click-to-call-widget/releases/latest/download/webRTCWidget.js"></script>
+<script>
+addEventListener("load", (event) => {
+  if (window.initWebRTCWidget) {
+    window.initWebRTCWidget("https://endpoint-trial.cognigy.ai/<token>")
+  }
+});
+</script>
 ```
 
-Beim Laden der Seite wird `window.initWebRTCWidget(ENDPOINT_URL, options)`
-aufgerufen. Das Widget rendert dabei seine eigenen (unsichtbar geschalteten)
-Steuerelemente in den DOM; der "Inforuf"-Button im Hilfe & Kontakt-Untermenü
-leitet Klicks an die echten Call-/End-Call-Buttons des Widgets weiter, damit
-Cognigy die Mikrofonfreigabe und SIP-Session steuert, während unser eigenes
-Kachel-Design sichtbar bleibt.
+Bewusst **ohne** zweites Options-Argument (Labels etc.) – nur die reine
+Init-Zeile, exakt wie im bestätigten Snippet, um Unterschiede zur
+funktionierenden Referenz auszuschließen.
 
-Soll ein anderer Endpoint verwendet werden, einfach `ENDPOINT_URL` in
-`script.js` anpassen.
+`script.js` initialisiert das Widget selbst **nicht**, sondern wartet nur
+darauf, dass es (über obigen inline Aufruf) seine eigenen, unsichtbar
+geschalteten Steuerelemente in den DOM rendert. Der "Inforuf"-Button im
+Hilfe & Kontakt-Untermenü leitet Klicks an die echten Call-/End-Call-Buttons
+des Widgets weiter, damit Cognigy die Mikrofonfreigabe und SIP-Session
+steuert, während unser eigenes Kachel-Design sichtbar bleibt. Ob ein Call
+aktiv ist, wird per `MutationObserver` daran erkannt, ob der
+Widget-eigene End-Call-Button gerade im DOM vorhanden ist (kein direkter
+Zugriff auf die Widget-Instanz, da deren Erzeugung in `index.html` selbst
+und nicht in `script.js` passiert).
+
+Soll ein anderer Endpoint verwendet werden, die URL im inline `<script>`
+in `index.html` anpassen.
 
 ## Hosting
 
